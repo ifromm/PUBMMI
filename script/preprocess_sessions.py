@@ -48,7 +48,7 @@ def get_mouse_action_type(mouse_events):
                 prev_x = mouse_events[i][4]
                 prev_y = mouse_events[i][5]
             if travelled_distance_x < 3 and travelled_distance_y < 3:
-                if number_of_drag > settings.LONG_CLICK_LIMIT:
+                if number_of_drag > utils.LONG_CLICK_LIMIT:
                     return utils.LONG_CLICK
                 else:
                     return utils.POINT_CLICK
