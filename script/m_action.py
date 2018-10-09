@@ -1,7 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
 import utils
-from feature import preprocess_sessions
+import preprocess_sessions
 
 
 def plot(data, title):
