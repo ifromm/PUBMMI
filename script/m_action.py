@@ -24,12 +24,12 @@ def plot(data, title):
     for i in range(1, len(data)):
         row = data[i]
         print(i)
-        if row[2] == settings.MOUSE_MOVE:
-            color = settings.MOUSE_MOVE_COLOR
-        elif row[2] == settings.POINT_CLICK:
-            color = settings.POINT_CLICK_COLOR
-        elif row[2] == settings.DRAG_AND_DROP:
-            color = settings.DRAG_AND_DROP_COLOR
+        if row[2] == utils.MOUSE_MOVE:
+            color = utilss.MOUSE_MOVE_COLOR
+        elif row[2] == utilss.POINT_CLICK:
+            color = utilss.POINT_CLICK_COLOR
+        elif row[2] == utilss.DRAG_AND_DROP:
+            color = utils.DRAG_AND_DROP_COLOR
         xt = int(row[0])
         yt = int(row[1])
         x = [x0, xt]
@@ -74,11 +74,11 @@ def handle_drag_and_drop(data):
 
 
 def determine_actions():
-    with open(settings.PATH, 'r') as csv_file:
+    with open(utils.PATH, 'r') as csv_file:
         data_reader = csv.reader(csv_file, delimiter=',')
         next(data_reader)  
-        user_name = preprocess_sessions.get_user_name_from_file_name(settings.PATH)
-        session = preprocess_sessions.get_session_from_file_name(settings.PATH)
+        user_name = preprocess_sessions.get_user_name_from_file_name(utils.PATH)
+        session = preprocess_sessions.get_session_from_file_name(utils.PATH)
         previous_row = next(data_reader)
         mouse_events = [previous_row]
 
@@ -109,11 +109,11 @@ def determine_actions():
                         or data['previous_row'][3] == 'Down' \
                         or data['previous_row'][3] == 'Up':
 
-                    if len(data['mouse_events']) > settings.EVENT_LIMIT:
+                    if len(data['mouse_events']) > utils.EVENT_LIMIT:
                         data['mouse_action'] = preprocess_sessions.get_mouse_action_type(data['mouse_events'][:-1])
                         data_plot[-1][2] = data['mouse_action']
 
-                        if data['mouse_action'] == settings.DRAG_AND_DROP:
+                        if data['mouse_action'] == utils.DRAG_AND_DROP:
                             handle_drag_and_drop(data)
                             data_plot[-1][2] = data['mouse_action']
 
@@ -132,7 +132,7 @@ def determine_actions():
                 # Check pause between mouse events, if it splits a complete mouse action
                 if (data['row'][3] == 'Down' and data['previous_row'][3] != 'Down'
                     or data['row'][3] == 'Up' and data['previous_row'][3] != 'Up') \
-                        or (float(data['row'][1]) - float(data['previous_row'][1]) > settings.TIME_LIMIT
+                        or (float(data['row'][1]) - float(data['previous_row'][1]) > utils.TIME_LIMIT
                             and (data['previous_row'][3] == 'Released'
                                  or data['previous_row'][3] == 'Down'
                                  or data['previous_row'][3] == 'Up'
