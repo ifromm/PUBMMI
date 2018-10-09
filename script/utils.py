@@ -35,8 +35,8 @@ def load_mouse_dynamics_dataset():
     """
     
     training_sessions = [] 
-    validation_sessions = [] # test on unseen data while training
-    testing_sessions = [] # test on unknown data when training is finished
+    validation_sessions = [] 
+    testing_sessions = [] 
     
     dataset_path = '/home/ith/Practice/predict-users-behavior/mouse_dataset/'
     training_files_path = os.path.join(dataset_path, 'training_files')
@@ -168,7 +168,7 @@ def data_to_machine_learning_examples(df, seq_size):
 
         np_data = one_class_data.values
         num_examples = np_data.shape[0] // seq_size
-        np_data = np_data[:num_examples * seq_size] # discard remainder
+        np_data = np_data[:num_examples * seq_size] 
         np_data = np.array(np.vsplit(np_data, num_examples))
         
         if x is None :
