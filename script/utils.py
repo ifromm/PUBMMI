@@ -11,6 +11,20 @@ MOUSE_MOVE = 1
 POINT_CLICK = 2
 DRAG_AND_DROP = 3
 
+# preprocessing
+X_LIMIT = 1920
+Y_LIMIT = 1080
+EVENT_LIMIT = 5
+TIME_LIMIT = 10
+CRITICAL_POINT = 0.0005  # ha ennel kisebb a curv/s (change of curvature)
+ANGLE_LIMIT = 20.0
+TIME_PAUSE_LIMIT = 0.1
+
+# plot
+MOUSE_MOVE_COLOR = 'green'
+POINT_CLICK_COLOR = 'blue'
+DRAG_AND_DROP_COLOR = 'orange'
+
 def timestamp_to_dts(timestamps):
     """ Converts a list of timestamps to time deltas """
     orig = timestamps[0]
