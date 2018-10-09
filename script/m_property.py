@@ -115,7 +115,7 @@ def pauses():
     number_of_pauses = 0
     paused_time = 0
     for i in range(0, len(data['dt'])):
-        if data['dt'][i] < settings.TIME_PAUSE_LIMIT:
+        if data['dt'][i] < utils.TIME_PAUSE_LIMIT:
             number_of_pauses += 1
             paused_time += data['dt'][i]
     paused_time_ratio = paused_time / summarize(data['dt'])
