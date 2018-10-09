@@ -9,8 +9,8 @@ def plot(data, title):
     if len(data) == 0:
         return
     axes = plt.gca()
-    axes.set_xlim(0, settings.X_LIMIT)
-    axes.set_ylim(0, settings.Y_LIMIT)
+    axes.set_xlim(0, utils.X_LIMIT)
+    axes.set_ylim(0, utils.Y_LIMIT)
     x0 = int(data[0][0])
     y0 = int(data[0][1])
     green = True
@@ -25,10 +25,10 @@ def plot(data, title):
         row = data[i]
         print(i)
         if row[2] == utils.MOUSE_MOVE:
-            color = utilss.MOUSE_MOVE_COLOR
-        elif row[2] == utilss.POINT_CLICK:
-            color = utilss.POINT_CLICK_COLOR
-        elif row[2] == utilss.DRAG_AND_DROP:
+            color = utils.MOUSE_MOVE_COLOR
+        elif row[2] == utils.POINT_CLICK:
+            color = utils.POINT_CLICK_COLOR
+        elif row[2] == utils.DRAG_AND_DROP:
             color = utils.DRAG_AND_DROP_COLOR
         xt = int(row[0])
         yt = int(row[1])
@@ -68,7 +68,7 @@ def handle_drag_and_drop(data):
     mouse_events = data['mouse_events'][split:]
     filtered_mouse_events = preprocess_sessions.filter_bad_records(mouse_events)
     if preprocess_sessions.is_long_drag_and_drop(filtered_mouse_events):
-        data['mouse_action'] = settings.DRAG_AND_DROP
+        data['mouse_action'] = utils.DRAG_AND_DROP
 
         data['index_action'] += 1
 
