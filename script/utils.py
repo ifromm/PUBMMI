@@ -16,7 +16,7 @@ X_LIMIT = 1920
 Y_LIMIT = 1080
 EVENT_LIMIT = 5
 TIME_LIMIT = 10
-CRITICAL_POINT = 0.0005  # ha ennel kisebb a curv/s (change of curvature)
+CRITICAL_POINT = 0.0005  # change of curvature
 ANGLE_LIMIT = 20.0
 TIME_PAUSE_LIMIT = 0.1
 
