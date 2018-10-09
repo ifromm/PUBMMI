@@ -6,6 +6,11 @@ from collections import Counter
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelBinarizer
 from sklearn.utils import shuffle
 
+# mouse actions
+MOUSE_MOVE = 1
+POINT_CLICK = 2
+DRAG_AND_DROP = 3
+
 def timestamp_to_dts(timestamps):
     """ Converts a list of timestamps to time deltas """
     orig = timestamps[0]
